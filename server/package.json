@@ -1,14 +1,14 @@
 {
-  "name": "server",
+  "name": "SheetSaver Server",
   "version": "1.0.0",
-  "description": "backend to JWT auth boilerplate",
+  "description": "backend to SheetSaver Client",
   "main": "index.js",
   "scripts": {
     "test": "test",
     "start": "nodemon index.js"
   },
   "keywords": [
-    "boilerplate"
+    ""
   ],
   "author": "dexter dagorne",
   "license": "ISC",

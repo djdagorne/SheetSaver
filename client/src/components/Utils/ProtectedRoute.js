@@ -15,7 +15,7 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
           return (
             <Redirect
               to={{
-                pathname: "/splash",
+                pathname: "/",
                 state: {
                   from: props.location,
                 },

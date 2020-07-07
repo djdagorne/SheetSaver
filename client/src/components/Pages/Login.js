@@ -26,7 +26,7 @@ export default function Login() {
     history.push("/home");
   };
   return (
-    <div className="page">
+    <main className="page">
       <h2>Log In</h2>
       <form className="form" onSubmit={submit}>
         <label htmlFor="login-email">Email</label>
@@ -46,6 +46,6 @@ export default function Login() {
 
         <input type="submit" value="Log In" />
       </form>
-    </div>
+    </main>
   );
 }

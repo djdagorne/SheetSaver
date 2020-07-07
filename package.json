@@ -1,5 +1,5 @@
 {
-  "name": "react-login-auth-boilerplate",
+  "name": "SheetSaver",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/djdagorne/MERN-login-boilerplate.git"
+    "url": "git+https://github.com/djdagorne/SheetSaver.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/djdagorne/MERN-login-boilerplate/issues"
+    "url": "https://github.com/djdagorne/SheetSaver/issues"
   },
-  "homepage": "https://github.com/djdagorne/MERN-login-boilerplate#readme",
+  "homepage": "https://github.com/djdagorne/SheetSaver#readme",
   "dependencies": {},
   "devDependencies": {}
 }

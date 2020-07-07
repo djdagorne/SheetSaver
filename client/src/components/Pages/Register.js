@@ -3,7 +3,7 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import UserContext from "../../context/UserContext.js";
-import ErrorNotice from "../Misc/ErrorNotice";
+import ErrorNotice from "../Utils/ErrorNotice";
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -36,7 +36,7 @@ export default function Register() {
   };
   /* TODO LOOK INTO REACT FORM HOOKS PACKAGE/NPM */
   return (
-    <div className="page">
+    <main className="page">
       <h2>Registration</h2>
       {error && (
         <ErrorNotice
@@ -78,6 +78,6 @@ export default function Register() {
 
         <input type="submit" value="Register" />
       </form>
-    </div>
+    </main>
   );
 }

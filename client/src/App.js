@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Axios from "axios";
 
-import Home from "./components/Pages/Home";
-import Splash from "./components/Pages/Splash";
+import Home from "./components/Pages/Home/Home";
+import Splash from "./components/Pages/Splash/Splash";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
-import ProtectedRoute from "./components/Misc/ProtectedRoute";
-import PublicOnlyRoute from "./components/Misc/PublicOnlyRoute";
+import Login from "./components/Pages/Login";
+import Register from "./components/Pages/Register";
+import ProtectedRoute from "./components/Utils/ProtectedRoute";
+import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import NotFound from "./components/Pages/NotFound";
 
 import UserContext from "./context/UserContext.js";
