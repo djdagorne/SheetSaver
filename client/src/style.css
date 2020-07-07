@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: "IBM Plex Sans", sans-serif;
+  --ff-secondary: "IBM Plex Mono", monospace;
+
+  --fw-reg: 400;
+  --fw-bold: 900;
+
+  --clr-light: #f5f5f5;
+  --clr-dark: #303030;
+  --clr-light-accent: #ffa600;
+  --clr-accent: #915e00;
+  --clr-dark-accent: #5f2b00;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.4),
+    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.1);
+
+  --bs-light: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.15),
+    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.1);
+
+  --bs-in: 0.25em 0.15em 0.75em 0.2em rgba(0, 0, 0, 0.3) inset,
+    -0.125em -0.125em 0.75em 0.2em rgba(0, 0, 0, 0.2) inset;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.25rem;
+  }
+}
+
+/* ##################################################### GENERAL STYLES */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  margin: 0;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+/* footer magic */
+#root > div {
+  min-height: 75vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+strong {
+  font-weight: var(--fw-bold);
+}
+/* general */
+
+.page {
+  padding: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+/* form */
+
+.form {
+  max-width: 554px;
+  margin: 0 auto;
+}
+
+.form label,
+.form input {
+  display: block;
+}
+
+.form input {
+  margin-bottom: 1rem;
+}
+
+.form label {
+  margin: 0 auto;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  width: 100%;
+  padding: 0.3rem;
+  border: 1px solid var(--clr-dark);
+  border-radius: 0;
+  font-size: 1.1rem;
+}
+
+.form input:focus {
+  border: 1px solid var(--clr-accent);
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.form input[type="submit"] {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--clr-dark);
+  border-radius: 0;
+  font-size: 1.1rem;
+  margin: 0 auto;
+}
+
+/* error notice */
+
+.error-notice {
+  max-width: 554px;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border: 1px solid var(--clr-dark);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error-notice button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-dark);
+  color: var(--clr-dark);
+  display: grid;
+  place-items: center;
+}
