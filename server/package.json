@@ -1,5 +1,5 @@
 {
-  "name": "SheetSaver Server",
+  "name": "server",
   "version": "1.0.0",
   "description": "backend to SheetSaver Client",
   "main": "index.js",

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext.js";
 import ErrorNotice from "../Utils/ErrorNotice";
 
-export default function Register() {
+export default function Register(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
@@ -29,6 +29,7 @@ export default function Register() {
         user: loginRes.data.user,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
+      props.hideModal();
       history.push("/home");
     } catch (error) {
       error.response.data.message && setError(error.response.data.message);
@@ -36,7 +37,7 @@ export default function Register() {
   };
   /* TODO LOOK INTO REACT FORM HOOKS PACKAGE/NPM */
   return (
-    <main className="page">
+    <>
       <h2>Registration</h2>
       {error && (
         <ErrorNotice
@@ -78,6 +79,6 @@ export default function Register() {
 
         <input type="submit" value="Register" />
       </form>
-    </main>
+    </>
   );
 }

@@ -189,6 +189,38 @@ main {
   padding: 0.5em;
 }
 
+/* ##################################################### POPUP */
+
+.popup {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.popup-inner {
+  overflow-y: scroll;
+  max-height: 500px;
+  width: 75%;
+  margin: auto;
+  padding: 2em;
+  overflow: hidden;
+  padding-left: 10px; /* offset the scrollbar width, to keep form centered */
+  vertical-align: justify;
+  border-radius: 4px;
+  background-color: #f0f0f2;
+  z-index: 9;
+}
+
+.popup-inner h2 {
+  text-align: center;
+}
+
 /* ##################################################### FORM */
 
 .form {

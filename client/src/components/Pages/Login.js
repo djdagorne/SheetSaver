@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import UserContext from "../../context/UserContext.js";
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -23,10 +23,12 @@ export default function Login() {
       user: loginRes.data.user,
     });
     localStorage.setItem("auth-token", loginRes.data.token);
+    props.hideModal();
     history.push("/home");
   };
+
   return (
-    <main className="page">
+    <>
       <h2>Log In</h2>
       <form className="form" onSubmit={submit}>
         <label htmlFor="login-email">Email</label>
@@ -46,6 +48,6 @@ export default function Login() {
 
         <input type="submit" value="Log In" />
       </form>
-    </main>
+    </>
   );
 }
