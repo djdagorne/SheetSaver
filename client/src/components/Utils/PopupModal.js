@@ -2,7 +2,9 @@ import React from "react";
 
 export default function PopupModal(props) {
   const handleBackgroundClick = (e) => {
-    if (e.target === e.currentTarget) props.hideModal();
+    if (e.target === e.currentTarget) {
+      props.hideModal();
+    }
   };
   return (
     <div className="popup" onClick={handleBackgroundClick}>

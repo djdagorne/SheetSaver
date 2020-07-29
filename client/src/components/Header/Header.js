@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-import AuthOptions from "./Auth/AuthOptions";
 import { useHistory } from "react-router-dom";
 
 import UserContext from "../../context/UserContext";
@@ -44,7 +43,8 @@ export default function Header() {
           <>
             <button onClick={register}>Register</button>
             <button onClick={login}>Log In</button>
-          </>
+            </>
+            
         )}
       </nav>
       {popup === "login" ? (
