@@ -26,11 +26,26 @@ export default function App() {
   // nest an async function within the useEffect to obtain token info on app render
 
   useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 0) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+    return () => {
+      window.removeEventListener('scroll');
+    };
+  }, []);
+
+  useEffect(() => {
     const checkLoggedIn = async () => {
       // check local storage for a token
       let token = localStorage.getItem('auth-token');
       // if no token, create filler blank token
       if (token === null) {
+        // eslint-disable-next-line no-console
         console.log('setting blank token!');
         localStorage.setItem('auth-token', '');
         token = '';

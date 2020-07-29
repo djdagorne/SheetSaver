@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
             className="social-list__link"
             title="to Dexter's Github"
           >
-            <i className="fab fa-github"></i>
+            <i className="fab fa-github" />
           </a>
         </li>
         <li className="social-list__item">
@@ -26,7 +26,7 @@ export default function Footer() {
             className="social-list__link"
             title="to Dexter's LinkedIn"
           >
-            <i className="fab fa-linkedin"></i>
+            <i className="fab fa-linkedin" />
           </a>
         </li>
       </ul>

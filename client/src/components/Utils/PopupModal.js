@@ -1,19 +1,27 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function PopupModal(props) {
+  const { children, hideModal } = props;
   const handleBackgroundClick = (e) => {
     if (e.target === e.currentTarget) {
-      props.hideModal();
+      hideModal();
     }
   };
   return (
-    <div className="popup" onClick={handleBackgroundClick}>
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div className="popup" onMouseDown={handleBackgroundClick}>
       <div className="popup-inner">
-        <button className="popup-inner--close-button" onClick={props.hideModal}>
+        <button type="button" className="popup-inner--close-button" onClick={hideModal}>
           Close
         </button>
-        <div>{props.children}</div>
+        <div>{children}</div>
       </div>
     </div>
   );
 }
+
+PopupModal.propTypes = {
+  hideModal: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
+};

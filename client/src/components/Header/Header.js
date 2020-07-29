@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import { useHistory } from "react-router-dom";
+import UserContext from '../../context/UserContext';
 
-import UserContext from "../../context/UserContext";
-
-import PopupModal from "../Utils/PopupModal";
-import Login from "../Pages/Login";
-import Register from "../Pages/Register";
+import PopupModal from '../Utils/PopupModal';
+import Login from '../Pages/Login';
+import Register from '../Pages/Register';
 
 export default function Header() {
   const { userData, setUserData } = useContext(UserContext);
@@ -16,43 +14,43 @@ export default function Header() {
   const history = useHistory();
 
   const register = () => {
-    //history.push("/register");
-    setPopup("register");
+    // history.push("/register");
+    setPopup('register');
   };
   const logout = () => {
     setUserData({ token: undefined, user: undefined });
-    localStorage.setItem("auth-token", "");
-    history.push("/");
+    localStorage.setItem('auth-token', '');
+    history.push('/');
   };
   const login = () => {
-    //history.push("/login");
-    setPopup("login");
+    // history.push("/login");
+    setPopup('login');
   };
   const hideModal = () => {
-    setPopup("");
+    setPopup('');
   };
   return (
-    <header id="header">
+    <header id="header" className="">
       <Link to="/" className="header__title">
         <span className="header__title--name">SheetSaver</span>
       </Link>
       <nav className="auth-options">
         {userData.user ? (
-          <button onClick={logout}>Log Out</button>
+          <button type="button" onClick={logout}>Log Out</button>
         ) : (
           <>
-            <button onClick={register}>Register</button>
-            <button onClick={login}>Log In</button>
-            </>
-            
+            <button type="button" onClick={register}>Register</button>
+            <button type="button" onClick={login}>Log In</button>
+          </>
+
         )}
       </nav>
-      {popup === "login" ? (
+      {popup === 'login' ? (
         <PopupModal hideModal={hideModal}>
           <Login hideModal={hideModal} />
         </PopupModal>
       ) : null}
-      {popup === "register" ? (
+      {popup === 'register' ? (
         <PopupModal hideModal={hideModal}>
           <Register hideModal={hideModal} />
         </PopupModal>

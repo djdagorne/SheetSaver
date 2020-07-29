@@ -19,5 +19,6 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-console': 'warn',
     'linebreak-style': 0,
+    'no-underscore-dangle': 0,
   },
 };

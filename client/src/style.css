@@ -88,19 +88,34 @@ strong {
 main {
   min-height: 75vh; /* footer magic */
   text-align: center;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 /* ##################################################### HEADER */
 
-#header {
+header{
   height: 3em;
   display: flex;
+  position: fixed;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--clr-dark);
   box-shadow: var(--bs-light);
   -webkit-box-shadow: var(--bs-light);
   -moz-box-shadow: var(--bs-light);
+  background-color: var(--clr-light);
+  transition: .3s;
+
+}
+
+header.sticky {
+  background-color: transparent;
+  border-bottom: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
 }
 
 .header__title {
