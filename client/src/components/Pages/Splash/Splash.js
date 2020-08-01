@@ -1,8 +1,10 @@
 import React from 'react';
+import DynamicInput from '../../Utils/DynamicInput';
 
 export default function Splash() {
   return (
     <main>
+      <DynamicInput />
       <section className="intro hero">
         <h1>sheet saver</h1>
       </section>

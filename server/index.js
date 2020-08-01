@@ -1,47 +1,37 @@
-const express = require('express');
+/* eslint-disable no-console */
+const app = require('express')();
+const http = require('http').createServer(app);
 const cors = require('cors');
-const mongoose = require('mongoose');
+const io = require('socket.io')(http, cors());
+
+require('./mongo.js');
 require('dotenv').config();
 
-const app = express();
-
-// set up middleware
-// express json parser
-app.use(express.json());
-app.use(cors());
-
 const PORT = process.env.PORT || '5000';
+let userInput = '';
 
-app.listen(PORT, () => {
-  console.log(`Server has started on port: ${PORT}`);
-});
-
-// at this point we set up a cluster/db on mongodb atlas we
-// make project, cluster, whitelist your IP if running locally...
-// connect to cluster, find connection string
-
-// set up mongoose
-
-mongoose.connect(
-  process.env.MONGODB_CONNECTION_STRING,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  },
-  (error) => {
-    if (error) {
-      throw error;
-    }
-    console.log('MongoDB connection established.');
-  },
-);
-
-// set up routes
-
+app.use(cors());
+app.use(require('express').json());
 app.use('/users', require('./routes/userRouter'));
 
 app.use('*', (req, res) => res.status(404).json({
   success: false,
   message: 'API endpoint doesn\'t exist',
 }));
+
+io.on('connection', (socket) => {
+  console.log('client connected to socketio');
+  io.emit('server-to-client', userInput);
+  socket.on('client-to-server', (data) => {
+    userInput = data;
+    io.emit('server-to-client', userInput);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('client disconnected');
+  });
+});
+
+http.listen(PORT, () => {
+  console.log(`Listening on localhost:${PORT}`);
+});

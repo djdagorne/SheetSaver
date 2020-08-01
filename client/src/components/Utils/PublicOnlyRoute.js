@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UserContext from '../../context/UserContext';
 
-export default function ProtectedRoute({ component: Component, ...rest }) {
+export default function PublicOnlyRoute({ component: Component, ...rest }) {
   const { userData } = useContext(UserContext);
 
   return (
@@ -30,7 +30,16 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
   );
 }
 
-ProtectedRoute.propTypes = {
-  component: PropTypes.element.isRequired,
-  location: PropTypes.element.isRequired,
+PublicOnlyRoute.propTypes = {
+  component: PropTypes.func,
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    search: PropTypes.string,
+  }),
+};
+
+PublicOnlyRoute.defaultProps = {
+  component: undefined,
+  location: undefined,
 };

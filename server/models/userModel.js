@@ -1,7 +1,12 @@
 const { isEmail } = require('validator');
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+/*
+  user objects will have a email, password, name and list of owned sheets,
+  and eventually a list of authorized docs.
+*/
+
+const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -17,7 +22,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sheets: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'sheet',
+  }],
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('user', UserSchema);
+
+UserSchema.pre('remove', (next) => {
+  const Sheets = mongoose.model('sheets');
+
+  Sheets.deleteMany({ _id: { $in: User.sheets } }).then(() => next());
+});
+
 module.exports = User;

@@ -30,6 +30,15 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
 }
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.element.isRequired,
-  location: PropTypes.element.isRequired,
+  component: PropTypes.func,
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    search: PropTypes.string,
+  }),
+};
+
+ProtectedRoute.defaultProps = {
+  component: undefined,
+  location: undefined,
 };
