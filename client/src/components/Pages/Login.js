@@ -30,7 +30,7 @@ export default function Login(props) {
 
   return (
     <>
-      <h2>Log In</h2>
+      <h2 className="modal-title">Log In</h2>
       <form className="form" onSubmit={submit}>
         <label id="login-email" htmlFor="login-email">
           Email

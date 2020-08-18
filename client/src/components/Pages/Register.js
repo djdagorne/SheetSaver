@@ -48,7 +48,7 @@ export default function Register(props) {
   /* TODO LOOK INTO REACT FORM HOOKS PACKAGE/NPM */
   return (
     <>
-      <h2>Registration</h2>
+      <h2 className="modal-title">Registration</h2>
       {error && (
         <ErrorNotice
           message={error}

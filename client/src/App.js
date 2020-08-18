@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Login from './components/Pages/Login';
 import Register from './components/Pages/Register';
+import Sheet from './components/Pages/Sheet/Sheet';
 import ProtectedRoute from './components/Utils/ProtectedRoute';
 import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
 import NotFound from './components/Pages/NotFound';
@@ -80,6 +81,7 @@ export default function App() {
           <ProtectedRoute path="/home" component={Home} />
           <PublicOnlyRoute path="/login" component={Login} />
           <PublicOnlyRoute path="/register" component={Register} />
+          <PublicOnlyRoute path="/sheet" component={Sheet} />
           <Route path="*" component={NotFound} />
         </Switch>
         <Footer />

@@ -17,28 +17,28 @@
   
   */
 
-  --ff-primary: "IBM Plex Sans", sans-serif;
+  --ff-primary: "Roboto", sans-serif;
   --ff-secondary: "IBM Plex Mono", monospace;
 
   --fw-reg: 400;
   --fw-bold: 900;
 
   --clr-light: #f5f5f5;
-  --clr-dark: #303030;
-  --clr-light-accent: #ffa600;
-  --clr-accent: #915e00;
-  --clr-dark-accent: #5f2b00;
+  --clr-dark: black;
+  --clr-light-accent: lightgrey;
+  --clr-accent: grey;
+  --clr-dark-accent: darkgrey;
 
   --fs-h1: 3rem;
   --fs-h2: 2.25rem;
   --fs-h3: 1.25rem;
   --fs-body: 1rem;
 
-  --bs: 0em 0.25em 0.75em rgba(0, 0, 0, 0.4),
+  --bs: 0em 0.25em 0.75em rgba(0, 0, 0, 0.3),
     0em 0.125em 0.25em rgba(0, 0, 0, 0.1);
 
   --bs-light: 0em 0.25em 0.75em rgba(0, 0, 0, 0.05),
-    0em 0.125em 0.25em rgba(0, 0, 0, 0.1);
+    0em 0.125em 0.25em rgba(0, 0, 0, 0.07);
 
   --bs-in: 0em 0.15em 0.75em 0.2em rgba(0, 0, 0, 0.3) inset,
     0em -0.125em 0.75em 0.2em rgba(0, 0, 0, 0.2) inset;
@@ -73,17 +73,34 @@ h3 {
 
 /* ##################################################### GENERAL STYLES */
 
+html, body, #root {
+  display: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 html {
+  position: relative;
   scroll-behavior: smooth;
+  min-height: 100%;
+  line-height: 1.6;
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
 }
 
 body {
-  background: var(--clr-light);
-  color: var(--clr-dark);
-  margin: 0;
-  font-family: var(--ff-primary);
-  font-size: var(--fs-body);
-  line-height: 1.6;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  min-height: 100%; /* footer magic */
+  text-align: center;
+  padding-top: 100px;
 }
 
 img {
@@ -95,38 +112,31 @@ strong {
   font-weight: var(--fw-bold);
 }
 
-main {
-  min-height: 75vh; /* footer magic */
-  text-align: center;
-  padding-top: 150px;
-  padding-bottom: 150px;
-}
 
 /* ##################################################### HEADER */
 
-header{
+header {
   height: 3em;
   display: flex;
   position: fixed;
   width: 100%;
+  top: 0;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--clr-dark);
-  box-shadow: var(--bs-light);
-  -webkit-box-shadow: var(--bs-light);
-  -moz-box-shadow: var(--bs-light);
   background-color: var(--clr-light);
   transition: .3s;
   z-index: 2;
-
-}
-
-header.sticky {
-  background-color: transparent;
-  border-bottom: transparent;
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  border-bottom: 1px solid var(--clr-dark);
+}
+
+header.sticky {
+  box-shadow: var(--bs-light);
+  -webkit-box-shadow: var(--bs-light);
+  -moz-box-shadow: var(--bs-light);
+  border-bottom: 1px solid var(--clr-dark);
 }
 
 .header__title {
@@ -148,11 +158,11 @@ header.sticky {
   text-decoration: none;
 }
 
-#header .auth-options {
+#header .header__auth-options {
   display: flex;
 }
 
-#header .auth-options button {
+#header .header__auth-options button {
   padding: 0.5rem;
   margin: 0 0.5rem;
   background: var(--clr-light);
@@ -166,13 +176,12 @@ header.sticky {
 /* ##################################################### HEADER */
 
 .footer {
+  position: relative;
   background: var(--clr-light);
   color: var(--clr-dark);
   border-top: 1px solid var(--clr-dark);
   text-align: center;
   padding: 1.5em 0;
-
-  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -226,18 +235,19 @@ header.sticky {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
   z-index: 10;
 }
 
 .popup-inner {
+  position: relative;
   overflow-y: scroll;
   max-height: 500px;
+  max-width: 500px;
   width: 75%;
   margin: auto;
   padding: 2em;
   overflow: hidden;
-  padding-left: 10px; /* offset the scrollbar width, to keep form centered */
   vertical-align: justify;
   border-radius: 4px;
   background-color: #f0f0f2;
@@ -246,6 +256,19 @@ header.sticky {
 
 .popup-inner h2 {
   text-align: center;
+}
+
+.popup-inner--close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  float: right;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.modal-title {
+  margin: auto;
 }
 
 /* ##################################################### FORM */
@@ -313,3 +336,107 @@ header.sticky {
   border: 1px solid var(--clr-dark);
   color: var(--clr-dark);
 }
+
+
+
+/* ##################################################### SPLASH */
+
+.splash-page { 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: gray;
+}
+
+.hero,
+.CTA {
+  background: var(--clr-light);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 250px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  box-shadow: var(--bs);
+}
+
+/* ##################################################### SHEET */
+
+
+.char-sheet {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--clr-light-accent);
+}
+
+.char-sheet__components {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-bottom: 55px;
+}
+
+
+/* ##################################################### CHARACTER COMPONENTS */
+
+.character-component {
+  flex: 1 1 300px; /* 300px flex basis for mobile support */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-light);
+  box-shadow: var(--bs);
+  /* min-width: 300px;
+  min-height: 150px;
+  max-height: 500px; */
+  margin: 10px;
+}
+
+.character-component:last-child {
+  margin-bottom: 25px;
+}
+
+.character-component__heading {
+  background: var(--clr-light-accent);
+  border-bottom: 1px solid var(--clr-dark-accent);
+  height: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ########################## HEALTH COMPONENT */
+
+.character-component__content--character-health {
+  display: grid;
+  grid-gap: 5px;
+  margin: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+}
+.character-component__content--character-health> * {
+  box-sizing: border-box;
+  border: 4px solid lightgrey;
+  border-radius: 4px;
+  box-shadow: var(--bs-light)
+}
+.character-component__current-hp {
+  grid-row: 1/2;
+  grid-column: 1/3;
+}
+.character-component__temp-hp {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+.character-component__hit-dice {
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
+.character-component__death-saves {
+  grid-row: 2/4;
+  grid-column: 2/3;
+}
+

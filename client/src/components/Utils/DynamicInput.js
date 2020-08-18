@@ -1,8 +1,11 @@
+/*
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 const ENDPOINT = 'http://localhost:5000/';
 const socket = io(ENDPOINT);
+
+// TODO  make inputName change the server emitters, keep data seperate
 
 export default function DynamicInput() {
   const [value, setValue] = useState('');
@@ -37,3 +40,4 @@ export default function DynamicInput() {
     <textarea value={value} onChange={(event) => handleChange(event.target.value)} />
   );
 }
+ */

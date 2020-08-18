@@ -1,0 +1,315 @@
+.input{
+  width: 45px;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+
+.section{
+  display: grid;
+  grid-template-columns: 500px;
+  grid-template-rows: 100px 8fr 60px;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  justify-content: center;
+  align-items: center;
+  border: 1px #444 solid;
+}
+/* 
+.section:nth-child(even) {
+    background-color: #ddd;
+} */
+
+/* ideally each section of this character sheet will be a component function, with its own separate css concerns */
+
+/* character details area */
+
+.details-section{
+  min-height: 200px;
+  /* grid-template-rows: 100px 8fr 60px; mb this works, test later TODO */ 
+  align-items: center;
+  justify-content: center;
+}
+
+.details-data-section{
+  display: grid;
+  margin: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2px;
+  align-content: center;
+  justify-content: center;
+}
+
+.hitpoints{
+  grid-area: 1 / 1 / span 1 / span 3;
+}
+
+.saving-throws-detail{
+  display: grid;
+  grid-area: 3 / 1 / span 1 / span 3;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr ;
+  grid-gap: 2px;
+}
+
+.details-block{
+  border: 1px solid black;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* character stats section */
+.stat-section{
+  min-height: 200px;
+  /* grid-template-rows: 100px 8fr 60px; mb this works, test later TODO */ 
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-section > h2{
+  grid-area: 1 / 1 / span 1 / span 3;
+}
+
+.stat-data-section{
+  display: grid;
+  margin: 50px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.stat-block{
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* saving throw section */
+
+.saving-section{
+  min-height: 200px;
+  /* grid-template-rows: 100px 8fr 60px; mb this works, test later TODO */ 
+  align-items: center;
+  justify-content: center;
+}
+
+.saving-section > h2{
+  grid-area: 1 / 1 / span 1 / span 3;
+}
+
+.saving-data-section{
+  display: grid;
+  margin: 50px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.saving-block{
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+
+/* skills section */
+
+
+.skills-section{
+  display: grid;
+  grid-template-rows: 100px 8fr 60px;
+  grid-gap: 2px;
+}
+
+.skills-section > h2{
+  grid-area: 1 / 1 / span 1 / span 3;
+}
+
+.skills-data-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-auto-rows: 35px;
+  grid-gap: 2px;
+  align-content: center;
+  justify-content: center;
+}
+
+.skills-block{
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.inline-skills > div{
+  display: inline-block;
+}
+
+/* proficiencies and languages section */
+
+.lang-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: 100px 8fr 60px;
+  grid-gap: 2px;
+}
+
+.lang-data-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-gap: 2px;
+  align-content: center;
+  justify-content: center;
+}
+
+.lang-block{
+  border: 1px solid black;
+  align-items: center;
+  justify-items: center;
+  padding: 5px;
+}
+
+/* equipment section */
+
+.eqpt-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: 100px 8fr 60px;
+  grid-gap: 2px;
+}
+
+.eqpt-section > h2{
+  grid-area: 1 / 1;
+}
+
+.eqpt-data-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: 1fr 1fr 1fr 3fr;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  grid-gap: 2px;
+}
+
+.currency-block{
+  display: grid;
+  grid-template-columns: 65px 65px 65px 65px 65px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.currency-block > div{
+  border: 1px solid black;
+}
+
+.eqpt-block{
+  border: 1px solid black;
+  align-items: center;
+  justify-items: center;
+  padding: 5px;
+}
+
+/* attacks and spellcasting section */
+
+
+.attack-section{
+  display: grid;
+  grid-template-columns: 400px;
+  grid-template-rows: 100px 8fr 60px; /* set a rigid row length for title/ending margin */
+  grid-gap: 2px;
+}
+
+.attack-data-section{
+  display: grid;
+}
+
+.attack-data-section > div{
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr;
+}
+
+.attack-data-section > div > div{
+  border: 1px black solid;
+}
+
+/* bio */
+
+.bio-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: 100px 8fr 60px;
+  grid-gap: 2px;
+}
+
+.bio-section > h2{
+  grid-area: 1 / 1;
+}
+
+.bio-data-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: repeat(auto, 1fr);
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  grid-gap: 2px;
+}
+
+.bio-block{
+  border: 1px solid black;
+  align-items: center;
+  justify-items: center;
+  padding: 5px;
+}
+
+/* features and traits */
+
+.trait-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: 100px 8fr 60px;
+  grid-gap: 2px;
+}
+
+.trait-section > h2{
+  grid-area: 1 / 1;
+}
+
+.trait-data-section{
+  display: grid;
+  grid-template-columns: 350px;
+  grid-template-rows: repeat(auto, 1fr);
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  grid-gap: 5px;
+}
+
+.trait-block{
+  border: 1px solid black;
+  align-items: center;
+  justify-items: center;
+  padding: 5px;
+}

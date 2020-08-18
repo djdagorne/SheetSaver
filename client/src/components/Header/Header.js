@@ -34,13 +34,13 @@ export default function Header() {
       <Link to="/" className="header__title">
         <span className="header__title--name">SheetSaver</span>
       </Link>
-      <nav className="auth-options">
+      <nav className="header__auth-options">
         {userData.user ? (
-          <button type="button" onClick={logout}>Log Out</button>
+          <button type="button" className="header__auth-options--button" onClick={logout}>Log Out</button>
         ) : (
           <>
-            <button type="button" onClick={register}>Register</button>
-            <button type="button" onClick={login}>Log In</button>
+            <button type="button" className="header__auth-options--button" onClick={register}>Register</button>
+            <button type="button" className="header__auth-options--button" onClick={login}>Log In</button>
           </>
 
         )}
