@@ -10,19 +10,19 @@ export default function Sheet() {
       <div className="char-sheet__components">
         <Health />
         <div className="character-component">
-          test
+          test1
         </div>
         <div className="character-component">
-          test
+          test2
         </div>
         <div className="character-component">
-          test
+          test3
         </div>
         <div className="character-component">
-          test
+          test4
         </div>
         <div className="character-component">
-          test
+          test5
         </div>
       </div>
     </main>

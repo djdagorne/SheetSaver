@@ -4,7 +4,7 @@ export default function Health() {
   return (
     <section className="character-component">
       <div className="character-component__heading">
-        <h3>CHARACTER HEALTH</h3>
+        <h3 className="character-component__title">Characters Health</h3>
       </div>
       <div className="character-component__content--character-health">
         <div className="character-component__temp-hp">temp hp</div>
