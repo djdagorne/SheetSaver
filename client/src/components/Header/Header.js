@@ -13,10 +13,6 @@ export default function Header() {
 
   const history = useHistory();
 
-  const register = () => {
-    // history.push("/register");
-    setPopup('register');
-  };
   const logout = () => {
     setUserData({ token: undefined, user: undefined });
     localStorage.setItem('auth-token', '');
@@ -27,32 +23,30 @@ export default function Header() {
     setPopup('login');
   };
   const hideModal = () => {
+    document.body.style.position = 'relative';
+    document.body.style.overflow = 'scroll';
     setPopup('');
   };
   return (
-    <header id="header" className="">
-      <Link to="/" className="header__title">
-        <span className="header__title--name">SheetSaver</span>
-      </Link>
-      <nav className="header__auth-options">
-        {userData.user ? (
-          <button type="button" className="header__auth-options--button" onClick={logout}>Log Out</button>
-        ) : (
-          <>
-            <button type="button" className="header__auth-options--button" onClick={register}>Register</button>
-            <button type="button" className="header__auth-options--button" onClick={login}>Log In</button>
-          </>
+    <header id="header">
+      <div className="header__container">
+        <Link to="/" className="header__title">
+          <span className="header__title--name">SheetSaver</span>
+        </Link>
+        <nav className="header__auth-options">
+          {userData.user ? (
+            <button type="button" className="header__auth-options--button" onClick={logout}>Log Out</button>
+          ) : (
+            <>
+              <button type="button" className="header__auth-options--button" onClick={login}>Log In</button>
+            </>
 
-        )}
-      </nav>
+          )}
+        </nav>
+      </div>
       {popup === 'login' ? (
         <PopupModal hideModal={hideModal}>
           <Login hideModal={hideModal} />
-        </PopupModal>
-      ) : null}
-      {popup === 'register' ? (
-        <PopupModal hideModal={hideModal}>
-          <Register hideModal={hideModal} />
         </PopupModal>
       ) : null}
     </header>

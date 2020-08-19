@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DynamicInput from '../../Utils/DynamicInput';
+import Register from '../Register';
+import Login from '../Login';
+import PopupModal from '../../Utils/PopupModal';
 
 export default function Splash() {
+  const [popup, setPopup] = useState();
+
+  const register = () => {
+    // history.push("/register");
+    setPopup('register');
+  };
+  const hideModal = () => {
+    document.body.style.position = 'relative';
+    document.body.style.overflow = 'scroll';
+    setPopup('');
+  };
   return (
     <main className="splash-page">
       {/* <DynamicInput /> */}
@@ -13,8 +27,23 @@ export default function Splash() {
         <p>Homebrew friendly, no buying expansions required!</p>
         <p>Bring power back to the pen, and away from the wallet!</p>
         <p>Update in real time, use across multiple devices.</p>
-        <p>sign up now!</p>
+        <button
+          type="button"
+          className="splash__auth-options--button"
+          onClick={register}
+        >
+          Sign Up Free
+        </button>
+
       </section>
+      <>
+
+        {popup === 'register' ? (
+          <PopupModal hideModal={hideModal}>
+            <Register hideModal={hideModal} />
+          </PopupModal>
+        ) : null}
+      </>
     </main>
   );
 }

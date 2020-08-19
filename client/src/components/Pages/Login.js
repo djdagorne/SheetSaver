@@ -28,9 +28,11 @@ export default function Login(props) {
     history.push('/home');
   };
 
+  /* TODO fix up BEM naming here */
+
   return (
-    <>
-      <h2 className="modal-title">Log In</h2>
+    <div className="login__container">
+      <h3 className="modal-title">Log In</h3>
       <form className="form" onSubmit={submit}>
         <label id="login-email" htmlFor="login-email">
           Email
@@ -51,6 +53,6 @@ export default function Login(props) {
         </label>
         <input type="submit" value="Log In" />
       </form>
-    </>
+    </div>
   );
 }

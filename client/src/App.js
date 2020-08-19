@@ -23,9 +23,11 @@ export default function App() {
     user: undefined,
   });
 
+  // TODO get consistent buttons - no rounded corner, light-accent edges, like splash page button
+
   // log in the user if an old token is found in local storage.
   // nest an async function within the useEffect to obtain token info on app render
-
+  /*
   useEffect(() => {
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
@@ -38,7 +40,7 @@ export default function App() {
     return () => {
       window.removeEventListener('scroll');
     };
-  }, []);
+  }, []); */
 
   useEffect(() => {
     const checkLoggedIn = async () => {

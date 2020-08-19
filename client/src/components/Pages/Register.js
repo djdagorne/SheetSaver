@@ -46,9 +46,10 @@ export default function Register(props) {
     }
   };
   /* TODO LOOK INTO REACT FORM HOOKS PACKAGE/NPM */
+  /* TODO fix up BEM naming here */
   return (
-    <>
-      <h2 className="modal-title">Registration</h2>
+    <div className="register__container">
+      <h3 className="modal-title">Registration</h3>
       {error && (
         <ErrorNotice
           message={error}
@@ -92,7 +93,7 @@ export default function Register(props) {
         </label>
         <input type="submit" value="Register" />
       </form>
-    </>
+    </div>
   );
 }
 

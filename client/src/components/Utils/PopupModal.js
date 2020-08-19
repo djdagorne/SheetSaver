@@ -8,6 +8,8 @@ export default function PopupModal(props) {
       hideModal();
     }
   };
+  document.body.style.position = 'absolute';
+  document.body.style.overflow = 'hidden';
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div className="popup" onMouseDown={handleBackgroundClick}>
