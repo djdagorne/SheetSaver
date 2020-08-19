@@ -13,9 +13,9 @@ export default function PopupModal(props) {
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div className="popup" onMouseDown={handleBackgroundClick}>
-      <div className="popup-inner">
-        <button type="button" className="popup-inner--close-button" onClick={hideModal}>
-          Close
+      <div className="popup__inner">
+        <button type="button" className="popup__close-button" onClick={hideModal}>
+          &times;
         </button>
         <div>{children}</div>
       </div>

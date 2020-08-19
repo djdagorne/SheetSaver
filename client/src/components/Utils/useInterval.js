@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import { useEffect, useRef } from 'react';
 
-// TODO implement this into my client-to-server socket updates
+// TODO implement this into my client-to-server socket updates?
 
 export default function useInterval(callback, delay) {
   const savedCallback = useRef();

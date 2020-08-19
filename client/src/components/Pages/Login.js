@@ -28,22 +28,20 @@ export default function Login(props) {
     history.push('/home');
   };
 
-  /* TODO fix up BEM naming here */
-
   return (
     <div className="login__container">
-      <h3 className="modal-title">Log In</h3>
-      <form className="form" onSubmit={submit}>
-        <label id="login-email" htmlFor="login-email">
+      <h3 className="login__title">Log In</h3>
+      <form className="form user__form" onSubmit={submit}>
+        <label id="login__email" htmlFor="login-email">
           Email
           <input
-            id="login-email"
+            id="login__email"
             type="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <label htmlFor="login-password">
+        <label htmlFor="login__password">
           Password
           <input
             id="login-password"
@@ -51,7 +49,7 @@ export default function Login(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <input type="submit" value="Log In" />
+        <input className="login__button" type="submit" value="Log In" />
       </form>
     </div>
   );

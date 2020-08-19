@@ -1,4 +1,3 @@
-/*
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
@@ -40,4 +39,3 @@ export default function DynamicInput() {
     <textarea value={value} onChange={(event) => handleChange(event.target.value)} />
   );
 }
- */

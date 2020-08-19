@@ -45,11 +45,9 @@ export default function Register(props) {
       }
     }
   };
-  /* TODO LOOK INTO REACT FORM HOOKS PACKAGE/NPM */
-  /* TODO fix up BEM naming here */
   return (
     <div className="register__container">
-      <h3 className="modal-title">Registration</h3>
+      <h3 className="register__title">Registration</h3>
       {error && (
         <ErrorNotice
           message={error}
@@ -58,7 +56,7 @@ export default function Register(props) {
           }}
         />
       )}
-      <form className="form" onSubmit={submit}>
+      <form className="form user__form" onSubmit={submit}>
         <label htmlFor="register-username">
           Username
           <input
@@ -82,6 +80,7 @@ export default function Register(props) {
           <input
             id="register-password"
             type="password"
+            placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
@@ -91,7 +90,7 @@ export default function Register(props) {
             onChange={(e) => setPasswordCheck(e.target.value)}
           />
         </label>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" className="popup-inner__submit-button" />
       </form>
     </div>
   );

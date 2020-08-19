@@ -14,6 +14,7 @@ import PublicOnlyRoute from './components/Utils/PublicOnlyRoute';
 import NotFound from './components/Pages/NotFound';
 
 import UserContext from './context/UserContext';
+import DynamicInput from './components/Utils/DynamicInput';
 
 import './style.css';
 
@@ -22,8 +23,6 @@ export default function App() {
     token: undefined,
     user: undefined,
   });
-
-  // TODO get consistent buttons - no rounded corner, light-accent edges, like splash page button
 
   // log in the user if an old token is found in local storage.
   // nest an async function within the useEffect to obtain token info on app render
@@ -86,6 +85,7 @@ export default function App() {
           <PublicOnlyRoute path="/sheet" component={Sheet} />
           <Route path="*" component={NotFound} />
         </Switch>
+        {/* <DynamicInput /> */}
         <Footer />
       </UserContext.Provider>
     </BrowserRouter>

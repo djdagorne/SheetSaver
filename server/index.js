@@ -8,7 +8,22 @@ require('./mongo.js');
 require('dotenv').config();
 
 const PORT = process.env.PORT || '5000';
-let userInput = '';
+let userInput = {
+  health: {
+    currentHP: 29,
+    maxHP: 30,
+    tempHP: 10,
+    hitDie: '1d8',
+    hitDice: 3,
+    saves: {
+      success: [true, false, false],
+      fail: [false, false, false],
+    },
+    armorClass: 13,
+    initiative: 3,
+    speed: 13,
+  },
+};
 
 app.use(cors());
 app.use(require('express').json());
@@ -23,6 +38,7 @@ io.on('connection', (socket) => {
   console.log('client connected to socketio');
   io.emit('server-to-client', userInput);
   socket.on('client-to-server', (data) => {
+    console.log(data);
     userInput = data;
     io.emit('server-to-client', userInput);
   });
