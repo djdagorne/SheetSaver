@@ -36,8 +36,9 @@ export default function Health({ data, updateCharacter }) {
         updateCharacter(values);
         break;
       default:
-        console.log('Error: ya found a way to break a checkbox');
+        break;
     }
+    return 'TODO fix this checkbox code';
   };
 
   return (
@@ -67,9 +68,9 @@ export default function Health({ data, updateCharacter }) {
               value={data.health.maxHP}
               onChange={(e) => handleChangeInput(e)}
             />
-            <h3>
+            <h4>
               current hp
-            </h3>
+            </h4>
           </label>
         </div>
         <div className="character-component__temp-hp">
@@ -82,9 +83,9 @@ export default function Health({ data, updateCharacter }) {
               value={data.health.tempHP}
               onChange={(e) => handleChangeInput(e)}
             />
-            <h3>
+            <h4>
               temp hp
-            </h3>
+            </h4>
           </label>
         </div>
         <div className="character-component__death-saves">
@@ -145,9 +146,9 @@ export default function Health({ data, updateCharacter }) {
                 failure
               </p>
             </div>
-            <h3>
+            <h4>
               death saves
-            </h3>
+            </h4>
           </label>
         </div>
         <div className="character-component__armor-class">
@@ -161,9 +162,9 @@ export default function Health({ data, updateCharacter }) {
               value={data.health.armorClass}
               onChange={(e) => handleChangeInput(e)}
             />
-            <h3>
+            <h4>
               armor class
-            </h3>
+            </h4>
           </label>
         </div>
         <div className="character-component__hit-dice">
@@ -187,9 +188,9 @@ export default function Health({ data, updateCharacter }) {
               value={data.health.hitDice}
               onChange={(e) => handleChangeInput(e)}
             />
-            <h3>
+            <h4>
               hit dice
-            </h3>
+            </h4>
           </label>
         </div>
         <div className="character-component__initiative">
@@ -203,9 +204,9 @@ export default function Health({ data, updateCharacter }) {
               value={data.health.initiative}
               onChange={(e) => handleChangeInput(e)}
             />
-            <h3>
+            <h4>
               initiative
-            </h3>
+            </h4>
           </label>
         </div>
         <div className="character-component__speed">
@@ -220,13 +221,13 @@ export default function Health({ data, updateCharacter }) {
                 value={data.health.speed}
                 onChange={(e) => handleChangeInput(e)}
               />
-              <p>
+              <p className="character-component__speed--subtext">
                 ft./turn
               </p>
             </div>
-            <h3>
+            <h4>
               speed
-            </h3>
+            </h4>
           </label>
         </div>
       </div>
@@ -236,5 +237,40 @@ export default function Health({ data, updateCharacter }) {
 
 Health.propTypes = {
   updateCharacter: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    health: PropTypes.shape({
+      currentHP: PropTypes.number,
+      maxHP: PropTypes.number,
+      tempHP: PropTypes.number,
+      hitDie: PropTypes.string,
+      hitDice: PropTypes.number,
+      saves: PropTypes.shape({
+        success: PropTypes.arrayOf(PropTypes.boolean),
+        fail: PropTypes.arrayOf(PropTypes.boolean),
+      }),
+      armorClass: PropTypes.number,
+      initiative: PropTypes.number,
+      speed: PropTypes.number,
+    }),
+  }),
+};
+
+// TODO default props
+Health.defaultProps = {
+  data: {
+    health: {
+      currentHP: null,
+      maxHP: null,
+      tempHP: null,
+      hitDie: '',
+      hitDice: null,
+      saves: {
+        success: [false, false, false],
+        fail: [false, false, false],
+      },
+      armorClass: null,
+      initiative: null,
+      speed: null,
+    },
+  },
 };

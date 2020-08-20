@@ -8,20 +8,22 @@ require('./mongo.js');
 require('dotenv').config();
 
 const PORT = process.env.PORT || '5000';
+
+// todo: set up timestamp on sheet object
 let userInput = {
   health: {
-    currentHP: 29,
-    maxHP: 30,
-    tempHP: 10,
-    hitDie: '1d8',
-    hitDice: 3,
+    currentHP: null,
+    maxHP: null,
+    tempHP: null,
+    hitDie: '',
+    hitDice: null,
     saves: {
       success: [true, false, false],
       fail: [false, false, false],
     },
-    armorClass: 13,
-    initiative: 3,
-    speed: 13,
+    armorClass: null,
+    initiative: null,
+    speed: null,
   },
 };
 

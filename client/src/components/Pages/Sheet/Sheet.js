@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 import Health from './SubComponents/Health';
@@ -9,18 +9,18 @@ const socket = io(ENDPOINT);
 
 const sample = {
   health: {
-    currentHP: 29,
-    maxHP: 30,
-    tempHP: 10,
-    hitDie: '1d8',
-    hitDice: 3,
+    currentHP: null,
+    maxHP: null,
+    tempHP: null,
+    hitDie: '',
+    hitDice: null,
     saves: {
-      success: [true, false, false],
+      success: [false, false, false],
       fail: [false, false, false],
     },
-    armorClass: 13,
-    initiative: 3,
-    speed: 13,
+    armorClass: null,
+    initiative: null,
+    speed: null,
   },
 };
 
@@ -31,7 +31,6 @@ export default function Sheet() {
 
   useEffect(() => {
     socket.on('server-to-client', (data) => {
-      console.log(data);
       updateCharacter(data);
       if (character !== data) {
         updateCharacter(data);
@@ -40,11 +39,11 @@ export default function Sheet() {
     return () => {
       socket.off();
     };
-  });
+  }, [character]);
 
   const handleChange = (data) => {
     socket.emit('client-to-server', data, (connectionError) => {
-      if (connectionError) {
+      if (!connectionError) {
         updateCharacter(data);
       }
     });
@@ -52,6 +51,7 @@ export default function Sheet() {
       socket.off();
     };
   };
+
   return (
     <main className="char-sheet">
       <h2 className="char-sheet__title">Name Here</h2>

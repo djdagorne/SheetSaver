@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import DynamicInput from '../../Utils/DynamicInput';
 import Register from '../Register';
-import Login from '../Login';
 import PopupModal from '../../Utils/PopupModal';
 
 export default function Splash() {

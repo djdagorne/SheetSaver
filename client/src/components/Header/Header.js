@@ -5,7 +5,6 @@ import UserContext from '../../context/UserContext';
 
 import PopupModal from '../Utils/PopupModal';
 import Login from '../Pages/Login';
-import Register from '../Pages/Register';
 
 export default function Header() {
   const { userData, setUserData } = useContext(UserContext);

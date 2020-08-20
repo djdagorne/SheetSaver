@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@200;400;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;700&display=swap');
 *,
 *::before,
 *::after {
@@ -16,7 +16,7 @@
     0 - footer
   */
 
-  --ff-primary: "IBM Plex Sans", sans-serif;
+  --ff-primary: "Solway", sans-serif;
   --ff-secondary: "IBM Plex Mono", monospace;
 
   --fw-light: 200;
@@ -32,17 +32,18 @@
   --fs-h1: 3rem;
   --fs-h2: 1.75rem;
   --fs-h3: 1.15rem;
+  --fs-h4: 1rem;
   --fs-body: 1rem;
   --fs-small: .75rem;
 
   --bs: 0em 0.25em 0.75em rgba(0, 0, 0, 0.3),
     0em 0.125em 0.25em rgba(0, 0, 0, 0.1);
-
   --bs-light: 0em 0.25em 0.75em rgba(0, 0, 0, 0.05),
     0em 0.125em 0.25em rgba(0, 0, 0, 0.07);
-
-  --bs-in: 0em 0.15em 0.75em 0.2em rgba(0, 0, 0, 0.3) inset,
-    0em -0.125em 0.75em 0.2em rgba(0, 0, 0, 0.2) inset;
+  --bs-in: inset 0px 31px 37px -24px rgba(0,0,0,0.13),
+    inset 0px 31px 16px -13px rgba(0,0,0,0.07);
+  --bs-in-light: inset 0px 50px 41px -30px rgba(0,0,0,0.01),
+    inset 0px 50px 50px -30px rgba(0,0,0,0.01);
 }
 
 @media (min-width: 768px) {
@@ -50,6 +51,7 @@
     --fs-h1: 3.5rem;
     --fs-h2: 2.75rem;
     --fs-h3: 1.45rem;
+    --fs-h3: 1rem;
     --fs-body: 1.15rem;
   }
 }
@@ -72,6 +74,9 @@ h2 {
 }
 h3 {
   font-size: var(--fs-h3);
+}
+h4 {
+  font-size: var(--fs-h4)
 }
 p {
   font-size: var(--fs-body);
@@ -233,7 +238,6 @@ strong {
 }
 
 .social-list__link {
-  /* make the padding generous for touch screen users. */
   padding: 0.5em;
 }
 
@@ -494,14 +498,18 @@ strong {
   min-height: 150px;
   max-height: 500px; */
   margin: .5em;
+  border-radius: 2px;
   overflow: hidden;
 }
-
+.character-component__content {
+  box-shadow: var(--bs-in-light);
+}
 .character-component__content > div {
   position: relative;
   display: flex;
   box-sizing: border-box;
   border: 1px solid var(--clr-light-accent);
+  box-shadow: var(--bs-in-light);
   justify-content: center;
   align-items: center;
 }
@@ -509,11 +517,11 @@ strong {
   position: relative;
   justify-content: center;
   align-content: center;
-  margin: 25px auto 20px;
+  margin: 15px auto 10px;
 }
-label > h3 {
+label > h4 {
   font-family: var(--ff-secondary);
-  font-size: var(--fs-body);
+  font-size: var(--fs-h4);
   font-weight: var(--fw-reg);
   text-shadow: var(--bs-light);
   color: var(--clr-dark);
@@ -531,6 +539,7 @@ label > h3 {
 .character-component__heading {
   background: var(--clr-light-accent);
   border-bottom: 1px solid var(--clr-dark-accent);
+  box-shadow: var(--bs-in-light);
   padding: .5rem 0;
   display: flex;
   flex-direction: column;
@@ -560,8 +569,7 @@ label > h3 {
 
 .character-component__content--character-health {
   display: grid;
-  grid-gap: 5px;
-  margin: 10px;
+  grid-gap: 2px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
@@ -596,6 +604,9 @@ label > h3 {
 .character-component__speed p{
   display: inline;
   font-size: var(--fs-small);
+}
+.character-component__speed--subtext {
+  color: var(--clr-dark-accent)
 }
 
 .character-component__checkbox-group{

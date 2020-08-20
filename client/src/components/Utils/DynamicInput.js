@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 const ENDPOINT = 'http://localhost:5000/';
 const socket = io(ENDPOINT);
 
-// TODO  make inputName change the server emitters, keep data seperate
+// TODO  make inputName change the server emitters, keep data separate
 
 export default function DynamicInput() {
   const [value, setValue] = useState('');
