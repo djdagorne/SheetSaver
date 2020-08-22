@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
 import Health from './SubComponents/Health';
+import Abilities from './SubComponents/Abilities';
+import SavingThrows from './SubComponents/SavingThrows';
 
 const ENDPOINT = 'http://localhost:5000/';
 const socket = io(ENDPOINT);
@@ -9,18 +11,38 @@ const socket = io(ENDPOINT);
 
 const sample = {
   health: {
-    currentHP: null,
-    maxHP: null,
-    tempHP: null,
-    hitDie: '',
-    hitDice: null,
-    saves: {
-      success: [false, false, false],
-      fail: [false, false, false],
-    },
-    armorClass: null,
-    initiative: null,
-    speed: null,
+    tempHP: 0,
+    currentHP: 0,
+    maxHP: 0,
+    hitDie: '0d0',
+    hitDice: 0,
+    saveOne: undefined,
+    saveTwo: undefined,
+    saveThree: undefined,
+    failOne: undefined,
+    failTwo: undefined,
+    failThree: undefined,
+    armorClass: 0,
+    initiative: 0,
+    speed: 0,
+  },
+  abilities: {
+    strScore: 0,
+    strMod: 0,
+    dexScore: 0,
+    dexMod: 0,
+    conScore: 0,
+    conMod: 0,
+    intScore: 0,
+    intMod: 0,
+    wisScore: 0,
+    wisMod: 0,
+    chaScore: 0,
+    chaMod: 0,
+  },
+  saves: {
+    strength: 0,
+    strengthProf: false, // todo finish
   },
 };
 
@@ -60,6 +82,14 @@ export default function Sheet() {
           data={character}
           updateCharacter={handleChange}
         />
+        <Abilities
+          data={character}
+          updateCharacter={handleChange}
+        />
+        <SavingThrows
+          data={character}
+          updateCharacter={handleChange}
+        />
         <div className="character-component">
           test1
         </div>
@@ -74,6 +104,12 @@ export default function Sheet() {
         </div>
         <div className="character-component">
           test5
+        </div>
+        <div className="character-component">
+          test6
+        </div>
+        <div className="character-component">
+          test7
         </div>
       </div>
     </main>

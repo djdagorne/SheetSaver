@@ -7,10 +7,10 @@ const mongoose = require('mongoose');
   have edit access enabled via the client.
 
   TODO get all data sorted
-  TODO get create endpoint
-  TODO get read endpoint
-  TODO get update endpoint with both auth checks
-  TODO get delete endpoint
+  - get create endpoint
+  - get read endpoint
+  - get update endpoint with both auth checks
+  - get delete endpoint
 */
 
 const SheetSchema = new mongoose.Schema({

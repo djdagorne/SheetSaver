@@ -18,12 +18,18 @@ export default function Splash() {
     <main className="splash-page">
       {/* <DynamicInput /> */}
       <section className="hero">
-        <h1 className="hero__text--title">sheet saver</h1>
-        <h2 className="hero__text--subtitle">record your character sheets</h2>
+        <h1 className="hero__text--title">SHEETSAVER</h1>
+        <h3 className="hero__text--subsubtitle">Dungeons &amp; Dragons 5e Character Sheet</h3>
+        <h2 className="hero__text--subtitle">Collaborative Real-Time Editor</h2>
+      </section>
+      <section className="about">
+        <p>Keep track of your characters, not your papers.</p>
+        <p>Never let a spill take out your character!</p>
+        <p>Ditch the erasers, update your inventory with easy.</p>
       </section>
       <section className="CTA">
-        <p>Homebrew friendly, no buying expansions required!</p>
-        <p>Bring power back to the pen, and away from the wallet!</p>
+        <p>Bring power back to the pen: homebrew friendly, no expansion gated content!</p>
+        <p>Share and edit with your DM, or just show off.</p>
         <p>Update in real time, use across multiple devices.</p>
         <button
           type="button"
@@ -32,16 +38,12 @@ export default function Splash() {
         >
           Sign Up Free
         </button>
-
       </section>
-      <>
-
-        {popup === 'register' ? (
-          <PopupModal hideModal={hideModal}>
-            <Register hideModal={hideModal} />
-          </PopupModal>
-        ) : null}
-      </>
+      {popup === 'register' ? (
+        <PopupModal hideModal={hideModal}>
+          <Register hideModal={hideModal} />
+        </PopupModal>
+      ) : null}
     </main>
   );
 }

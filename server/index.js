@@ -12,18 +12,38 @@ const PORT = process.env.PORT || '5000';
 // todo: set up timestamp on sheet object
 let userInput = {
   health: {
-    currentHP: null,
-    maxHP: null,
-    tempHP: null,
-    hitDie: '',
-    hitDice: null,
-    saves: {
-      success: [true, false, false],
-      fail: [false, false, false],
-    },
-    armorClass: null,
-    initiative: null,
-    speed: null,
+    tempHP: 0,
+    currentHP: 0,
+    maxHP: 0,
+    hitDie: '0d0',
+    hitDice: 0,
+    saveOne: undefined,
+    saveTwo: undefined,
+    saveThree: undefined,
+    failOne: undefined,
+    failTwo: undefined,
+    failThree: undefined,
+    armorClass: 0,
+    initiative: 0,
+    speed: 0,
+  },
+  abilities: {
+    strScore: 0,
+    strMod: 0,
+    dexScore: 0,
+    dexMod: 0,
+    conScore: 0,
+    conMod: 0,
+    intScore: 0,
+    intMod: 0,
+    wisScore: 0,
+    wisMod: 0,
+    chaScore: 0,
+    chaMod: 0,
+  },
+  saves: {
+    strength: 0,
+    strengthProf: false,
   },
 };
 
@@ -40,7 +60,7 @@ io.on('connection', (socket) => {
   console.log('client connected to socketio');
   io.emit('server-to-client', userInput);
   socket.on('client-to-server', (data) => {
-    console.log(data);
+    console.log(data.health);
     userInput = data;
     io.emit('server-to-client', userInput);
   });

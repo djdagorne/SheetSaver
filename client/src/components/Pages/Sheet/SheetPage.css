@@ -30,7 +30,6 @@ input::-webkit-inner-spin-button {
 
 .details-section{
   min-height: 200px;
-  /* grid-template-rows: 100px 8fr 60px; mb this works, test later TODO */ 
   align-items: center;
   justify-content: center;
 }
@@ -67,7 +66,6 @@ input::-webkit-inner-spin-button {
 /* character stats section */
 .stat-section{
   min-height: 200px;
-  /* grid-template-rows: 100px 8fr 60px; mb this works, test later TODO */ 
   align-items: center;
   justify-content: center;
 }
@@ -100,7 +98,6 @@ input::-webkit-inner-spin-button {
 
 .saving-section{
   min-height: 200px;
-  /* grid-template-rows: 100px 8fr 60px; mb this works, test later TODO */ 
   align-items: center;
   justify-content: center;
 }

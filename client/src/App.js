@@ -23,6 +23,14 @@ export default function App() {
     user: undefined,
   });
 
+  // TODO finish components (ez)
+  // - get database schema for character object
+  // - public sheets with real time read access
+  // - sheets with only owner + approved username list real time edit access
+  // - character list under user home page
+
+  // BONUS comments under characters
+
   // log in the user if an old token is found in local storage.
   // nest an async function within the useEffect to obtain token info on app render
   /*
