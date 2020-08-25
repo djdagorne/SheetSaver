@@ -497,6 +497,14 @@ strong {
   margin: 0 auto;
 }
 
+@media (min-width: 900px) {
+  .char-sheet__components {
+    /* TODO fix all this, make grid for desktop views */
+    flex-direction: column;
+    max-height: 1200px;
+  }
+}
+
 
 /* ##################################################### CHARACTER COMPONENTS */
 
@@ -507,13 +515,20 @@ strong {
   flex-direction: column;
   background: var(--clr-light);
   box-shadow: var(--bs-light);
-  border: 1px var(--clr-light-accent) solid;
   margin: 5px 10px;
+  max-width: 300px;
+}
+
+.character-component--plus {
+  position: relative;
+  top: -.25em;
+  left: .25em;
 }
 
 .character-component__content {
   box-shadow: var(--bs-in-light);
   display: grid;
+  grid-gap: 1px;
   grid-template-columns: repeat(12, 1fr);
 }
 
@@ -524,6 +539,7 @@ strong {
   align-items: center;
   border: 1px solid var(--clr-light-accent);
   box-shadow: var(--bs-in-light);
+  background: var(--clr-light);
 }
 .character-component__checkbox {
   align-self: center;
@@ -585,8 +601,6 @@ strong {
 /* ########################## HEALTH COMPONENT */
 
 .character-component__content--character-health {
-  display: grid;
-  grid-gap: 2px;
   grid-template-rows: repeat(3, 1fr);
 }
 .character-component__temp-hp {
@@ -600,6 +614,14 @@ strong {
 .character-component__hit-dice {
   grid-row: 2/3;
   grid-column: 1/7;
+}
+.character-component__input--hd-1 {
+  width: 15px;
+  margin-right: 0;
+}
+.character-component__input--hd-2 {
+  width: 25px;
+  margin-left: 0;
 }
 .character-component__death-saves {
   grid-row: 2/3;
@@ -643,11 +665,6 @@ strong {
 
 /* ########################## ABILITY COMPONENT */
 
-.character-component__content--character-abilities {
-  grid-gap: 2px; 
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(12, 1fr);
-}
 .character-component__input--mod {
   width: 55px;
   font-size: var(--fs-h2);
@@ -683,7 +700,44 @@ strong {
 
 /* ########################## SAVING THROW COMPONENT */
 
+.character-component__content--character-saves {
+  grid-template-rows: repeat(3, 1fr);
+}
+
 .character-component__strength-save {
   grid-row: 1/2;
-  grid-column: 1/13;
+  grid-column: 1/7;
 }
+.character-component__dexterity-save {
+  grid-row: 1/2;
+  grid-column: 7/13;
+}
+.character-component__constitution-save {
+  grid-row: 2/3;
+  grid-column: 1/7;
+}
+.character-component__intelligence-save {
+  grid-row: 2/3;
+  grid-column: 7/13;
+}
+.character-component__wisdom-save {
+  grid-row: 3/4;
+  grid-column: 1/7;
+}
+.character-component__charisma-save {
+  grid-row: 3/4;
+  grid-column: 7/13;
+}
+
+/* ########################## SKILLS COMPONENT */
+
+.character-component__content--character-skills {
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}/* 
+.character-component__acrobatics-check {
+  grid-row: 1/2;
+  grid-column: 1/7;
+} */

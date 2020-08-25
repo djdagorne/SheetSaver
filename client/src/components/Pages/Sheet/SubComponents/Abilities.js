@@ -5,8 +5,14 @@ import React from 'react';
 export default function Abilities({ data, updateCharacter }) {
   const handleChangeInput = (event) => {
     const values = { ...data };
-    values.abilities[event.target.name] = event.target.value;
-    updateCharacter(values);
+    if (event.target.type === 'checkbox') {
+      const target = values.abilities[event.target.id][event.target.name];
+      values.abilities[event.target.id][event.target.name] = !target;
+      updateCharacter(values);
+    } else if (event.target.value < 99.1) {
+      values.abilities[event.target.id][event.target.name] = Number(event.target.value);
+      updateCharacter(values);
+    }
   };
   // Passing in undefined values to my controlled inputs gives warnings >:(
 
@@ -16,18 +22,54 @@ export default function Abilities({ data, updateCharacter }) {
         <h3 className="character-component__title">Abilities</h3>
       </div>
       <div className="character-component__content character-component__content--character-abilities">
+
+        {data.abilities.map((ability, index) => (
+          <div key={ability.name} className={`character-component__item character-component__${ability.name}`}>
+            <label id={`${ability.name}Prof`} htmlFor={`${ability.name}Prof`}>
+              <div className="character-component__input--wrap">
+                {ability.modifier > 0
+                  ? <div className="character-component--plus">+</div>
+                  : ''}
+                <input
+                  id={index}
+                  className="character-component__input character-component__input--mod"
+                  type="number"
+                  placeholder="0"
+                  name="modifier"
+                  value={ability.modifier}
+                  onChange={(e) => handleChangeInput(e)}
+                  contentEditable
+                />
+                <input
+                  id={index}
+                  className="character-component__input character-component__input--score"
+                  type="number"
+                  placeholder="0"
+                  name="score"
+                  value={ability.score}
+                  onChange={(e) => handleChangeInput(e)}
+                />
+              </div>
+              <h4 className="character-component__label-title">
+                {ability.name}
+              </h4>
+            </label>
+          </div>
+        ))}
+
+        {/*
         <div className="character-component__item character-component__strength">
           <label id="strength" htmlFor="strMod">
             <div className="character-component__input--wrap">
-              {data.abilities.strMod > 0
-                ? '+'
+              {data.abilities.modifier > 0
+                ? <div className="character-component--plus">+</div>
                 : ''}
               <input
                 className="character-component__input character-component__input--mod"
                 type="number"
                 placeholder="0"
-                name="strMod"
-                value={data.abilities.strMod}
+                name="modifier"
+                value={data.abilities.modifier}
                 onChange={(e) => handleChangeInput(e)}
                 contentEditable
               />
@@ -35,8 +77,8 @@ export default function Abilities({ data, updateCharacter }) {
                 className="character-component__input character-component__input--score"
                 type="number"
                 placeholder="0"
-                name="strScore"
-                value={data.abilities.strScore}
+                name="score"
+                value={data.abilities.score}
                 max="99"
                 onChange={(e) => handleChangeInput(e)}
               />
@@ -45,147 +87,8 @@ export default function Abilities({ data, updateCharacter }) {
               strength
             </h4>
           </label>
-        </div>
-        <div className="character-component__item character-component__dexterity">
-          <label id="dexterity" htmlFor="dexMod">
-            <div className="character-component__input--wrap">
-              {data.abilities.dexMod > 0
-                ? '+'
-                : null}
-              <input
-                className="character-component__input character-component__input--mod"
-                type="number"
-                placeholder="0"
-                name="dexMod"
-                value={data.abilities.dexMod}
-                onChange={(e) => handleChangeInput(e)}
-              />
-              <input
-                className="character-component__input character-component__input--score"
-                type="number"
-                placeholder="0"
-                name="dexScore"
-                value={data.abilities.dexScore}
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-            <h4 className="character-component__label-title">
-              dexterity
-            </h4>
-          </label>
-        </div>
-        <div className="character-component__item character-component__constitution">
-          <label id="constitution" htmlFor="conMod">
-            <div className="character-component__input--wrap">
-              {data.abilities.conMod > 0
-                ? '+'
-                : null}
-              <input
-                className="character-component__input character-component__input--mod"
-                type="number"
-                placeholder="0"
-                name="conMod"
-                value={data.abilities.conMod}
-                onChange={(e) => handleChangeInput(e)}
-              />
-              <input
-                className="character-component__input character-component__input--score"
-                type="number"
-                placeholder="0"
-                name="conScore"
-                value={data.abilities.conScore}
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-            <h4 className="character-component__label-title">
-              constitution
-            </h4>
-          </label>
-        </div>
-        <div className="character-component__item character-component__intelligence">
-          <label id="intelligence" htmlFor="intMod">
-            <div className="character-component__input--wrap">
-              {data.abilities.intMod > 0
-                ? '+'
-                : null}
-              <input
-                className="character-component__input character-component__input--mod"
-                type="number"
-                placeholder="0"
-                name="intMod"
-                value={data.abilities.intMod}
-                onChange={(e) => handleChangeInput(e)}
-              />
-              <input
-                className="character-component__input character-component__input--score"
-                type="number"
-                placeholder="0"
-                name="intScore"
-                value={data.abilities.intScore}
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-            <h4 className="character-component__label-title">
-              intelligence
-            </h4>
-          </label>
-        </div>
-        <div className="character-component__item character-component__wisdom">
-          <label id="wisdom" htmlFor="wisMod">
-            <div className="character-component__input--wrap">
-              {data.abilities.wisMod > 0
-                ? '+'
-                : null}
-              <input
-                className="character-component__input character-component__input--mod"
-                type="number"
-                placeholder="0"
-                name="wisMod"
-                value={data.abilities.wisMod}
-                onChange={(e) => handleChangeInput(e)}
-              />
-              <input
-                className="character-component__input character-component__input--score"
-                type="number"
-                placeholder="0"
-                name="wisScore"
-                value={data.abilities.wisScore}
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-            <h4 className="character-component__label-title">
-              wisdom
-            </h4>
-          </label>
-        </div>
-        <div className="character-component__item character-component__charisma">
-          <label id="charisma" htmlFor="chaMod">
-            <div className="character-component__input--wrap">
-              {data.abilities.chaMod > 0
-                ? '+'
-                : null}
-              <input
-                className="character-component__input character-component__input--mod"
-                type="number"
-                placeholder="0"
-                name="chaMod"
-                value={data.abilities.chaMod}
-                onChange={(e) => handleChangeInput(e)}
-              />
-              <input
-                className="character-component__input character-component__input--score"
-                type="number"
-                placeholder="0"
-                name="chaScore"
-                value={data.abilities.chaScore}
-                onChange={(e) => handleChangeInput(e)}
-              />
-            </div>
-            <h4 className="character-component__label-title">
-              charisma
-            </h4>
-          </label>
-        </div>
+        </div> */}
+
       </div>
     </div>
   );

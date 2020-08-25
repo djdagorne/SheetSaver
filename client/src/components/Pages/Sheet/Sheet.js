@@ -4,53 +4,23 @@ import io from 'socket.io-client';
 import Health from './SubComponents/Health';
 import Abilities from './SubComponents/Abilities';
 import SavingThrows from './SubComponents/SavingThrows';
+import Skills from './SubComponents/Skills';
+
+import sample from '../../Utils/SampleCharacter';
+
+// TODO make radio/checkbox buttons more interesting.
+//      maybe a box with dim text that goes dark on checked=true
 
 const ENDPOINT = 'http://localhost:5000/';
 const socket = io(ENDPOINT);
-/* import './SheetPage.css'; */
-
-const sample = {
-  health: {
-    tempHP: 0,
-    currentHP: 0,
-    maxHP: 0,
-    hitDie: '0d0',
-    hitDice: 0,
-    saveOne: undefined,
-    saveTwo: undefined,
-    saveThree: undefined,
-    failOne: undefined,
-    failTwo: undefined,
-    failThree: undefined,
-    armorClass: 0,
-    initiative: 0,
-    speed: 0,
-  },
-  abilities: {
-    strScore: 0,
-    strMod: 0,
-    dexScore: 0,
-    dexMod: 0,
-    conScore: 0,
-    conMod: 0,
-    intScore: 0,
-    intMod: 0,
-    wisScore: 0,
-    wisMod: 0,
-    chaScore: 0,
-    chaMod: 0,
-  },
-  saves: {
-    strength: 0,
-    strengthProf: false, // todo finish
-  },
-};
 
 export default function Sheet() {
   const [character, updateCharacter] = useState(sample);
   // TODO memoization here to make sure
-  // all components aren't re-rendered every time object changes?
+  //    all components aren't re-rendered every time object changes?
 
+  // TODO maybe get a search bar to drop from
+  //    from the nav so player can filter components ?
   useEffect(() => {
     socket.on('server-to-client', (data) => {
       updateCharacter(data);
@@ -87,6 +57,10 @@ export default function Sheet() {
           updateCharacter={handleChange}
         />
         <SavingThrows
+          data={character}
+          updateCharacter={handleChange}
+        />
+        <Skills
           data={character}
           updateCharacter={handleChange}
         />

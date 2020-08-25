@@ -3,16 +3,30 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 export default function Health({ data, updateCharacter }) {
-  // TODO deconstruct data into seperate objects?
+  // TODO deconstruct data into separate objects?
   const handleChangeInput = (event) => {
     const values = { ...data };
     if (event.target.type === 'checkbox') {
       values.health[event.target.name] = !values.health[event.target.name];
       updateCharacter(values);
-    } else {
-      values.health[event.target.name] = event.target.value;
+      /* TODO do a better job at communicating that you need to
+       keep digits in the tens, keep dice multiplier in the ones */
+    } else if (event.target.name === 'hitDiceMultiplier') {
+      if (event.target.value < 10) {
+        values.health[event.target.name] = Number(event.target.value);
+        updateCharacter(values);
+      }
+    // eslint-disable-next-line no-constant-condition
+    } else if (event.target.name === 'tempHP' || 'currentHP' || 'maxHP') {
+      if (event.target.value < 1000) {
+        values.health[event.target.name] = Number(event.target.value);
+        updateCharacter(values);
+      }
+    } else if (event.target.value < 99.1) {
+      values.health[event.target.name] = Number(event.target.value);
       updateCharacter(values);
     }
+    // TODO error responses here?
   };
 
   return (
@@ -65,22 +79,32 @@ export default function Health({ data, updateCharacter }) {
         <div className="character-component__item character-component__hit-dice">
           <label id="hit-dice" htmlFor="hit-dice">
             <input
-              id="hit-dice"
-              className="character-component__input "
-              type="text"
-              placeholder="0d0"
-              name="hitDie"
-              value={data.health.hitDie}
+              id="hitDieMult"
+              className="character-component__input character-component__input--hd-1"
+              type="number"
+              placeholder="0"
+              name="hitDiceMultiplier"
+              value={data.health.hitDiceMultiplier}
+              onChange={(e) => handleChangeInput(e)}
+            />
+            d
+            <input
+              id="hit-dice-size"
+              className="character-component__input character-component__input--hd-2"
+              type="number"
+              placeholder="0"
+              name="hitDiceSize"
+              value={data.health.hitDiceSize}
               onChange={(e) => handleChangeInput(e)}
             />
             &times;
             <input
-              id="remaining-dice"
+              id="hitDiceRemaining"
               className="character-component__input "
               type="number"
               placeholder="0"
-              name="hitDice"
-              value={data.health.hitDice}
+              name="hitDiceRemaining"
+              value={data.health.hitDiceRemaining}
               onChange={(e) => handleChangeInput(e)}
             />
             <h4 className="character-component__label-title">
@@ -96,15 +120,15 @@ export default function Health({ data, updateCharacter }) {
                   type="checkbox"
                   className="character-component__checkbox"
                   name="saveOne"
-                  value={data.health.saveOne}
-                  checked={data.health.saveOne}
+                  // value={data.health.saveOne}
+                  checked={data.health.saveOne} // uncontrolled if checked is assigned
                   onChange={(e) => handleChangeInput(e)}
                 />
                 <input
                   type="checkbox"
                   className="character-component__checkbox"
                   name="saveTwo"
-                  value={data.health.saveTwo}
+                  // value={data.health.saveTwo}
                   checked={data.health.saveTwo}
                   onChange={(e) => handleChangeInput(e)}
                 />
@@ -112,7 +136,7 @@ export default function Health({ data, updateCharacter }) {
                   type="checkbox"
                   className="character-component__checkbox"
                   name="saveThree"
-                  value={data.health.saveThree}
+                  // value={data.health.saveThree}
                   checked={data.health.saveThree}
                   onChange={(e) => handleChangeInput(e)}
                 />
@@ -127,7 +151,7 @@ export default function Health({ data, updateCharacter }) {
                   type="checkbox"
                   className="character-component__checkbox"
                   name="failOne"
-                  value={data.health.failOne}
+                  // value={data.health.failOne}
                   checked={data.health.failOne}
                   onChange={(e) => handleChangeInput(e)}
                 />
@@ -135,7 +159,7 @@ export default function Health({ data, updateCharacter }) {
                   type="checkbox"
                   className="character-component__checkbox"
                   name="failTwo"
-                  value={data.health.failTwo}
+                  // value={data.health.failTwo}
                   checked={data.health.failTwo}
                   onChange={(e) => handleChangeInput(e)}
                 />
@@ -143,7 +167,7 @@ export default function Health({ data, updateCharacter }) {
                   type="checkbox"
                   className="character-component__checkbox"
                   name="failThree"
-                  value={data.health.failThree}
+                  // value={data.health.failThree}
                   checked={data.health.failThree}
                   onChange={(e) => handleChangeInput(e)}
                 />
@@ -214,25 +238,3 @@ export default function Health({ data, updateCharacter }) {
     </div>
   );
 }
-/*
-Health.propTypes = {
-  updateCharacter: PropTypes.func.isRequired,
-  data: PropTypes.shape({
-    health: PropTypes.shape({
-      currentHP: PropTypes.number,
-      maxHP: PropTypes.number,
-      tempHP: PropTypes.number,
-      hitDie: PropTypes.string,
-      hitDice: PropTypes.number,
-      saves: PropTypes.shape({
-        success: PropTypes.arrayOf(PropTypes.bool),
-        fail: PropTypes.arrayOf(PropTypes.bool),
-      }),
-      armorClass: PropTypes.number,
-      initiative: PropTypes.number,
-      speed: PropTypes.number,
-    }),
-  }),
-};
-
- */
