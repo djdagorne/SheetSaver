@@ -5,6 +5,8 @@ import Health from './SubComponents/Health';
 import Abilities from './SubComponents/Abilities';
 import SavingThrows from './SubComponents/SavingThrows';
 import Skills from './SubComponents/Skills';
+import ProficienciesAndLanguages from './SubComponents/ProficienciesAndLanguages';
+import AttacksAndSpellcasting from './SubComponents/AttacksAndSpellcasting';
 
 import sample from '../../Utils/SampleCharacter';
 
@@ -15,7 +17,7 @@ const ENDPOINT = 'http://localhost:5000/';
 const socket = io(ENDPOINT);
 
 export default function Sheet() {
-  const [character, updateCharacter] = useState(sample);
+  const [character, setCharacter] = useState(sample);
   // TODO memoization here to make sure
   //    all components aren't re-rendered every time object changes?
 
@@ -23,9 +25,9 @@ export default function Sheet() {
   //    from the nav so player can filter components ?
   useEffect(() => {
     socket.on('server-to-client', (data) => {
-      updateCharacter(data);
+      setCharacter(data);
       if (character !== data) {
-        updateCharacter(data);
+        setCharacter(data);
       }
     });
     return () => {
@@ -34,9 +36,10 @@ export default function Sheet() {
   }, [character]);
 
   const handleChange = (data) => {
+    setCharacter(data);
     socket.emit('client-to-server', data, (connectionError) => {
-      if (!connectionError) {
-        updateCharacter(data);
+      if (connectionError) {
+        console.log('conn err');
       }
     });
     return () => {
@@ -48,7 +51,7 @@ export default function Sheet() {
     <main className="char-sheet">
       <h2 className="char-sheet__title">Name Here</h2>
       <div className="char-sheet__components">
-        <Health
+        {/* <Health
           data={character}
           updateCharacter={handleChange}
         />
@@ -61,6 +64,14 @@ export default function Sheet() {
           updateCharacter={handleChange}
         />
         <Skills
+          data={character}
+          updateCharacter={handleChange}
+        />
+        <ProficienciesAndLanguages
+          data={character}
+          updateCharacter={handleChange}
+        /> */}
+        <AttacksAndSpellcasting
           data={character}
           updateCharacter={handleChange}
         />

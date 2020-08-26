@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
   health: {
     tempHP: 0,
@@ -178,4 +180,29 @@ export default {
       prof: false,
     },
   ],
+  proficienciesAndLanguages:
+    [
+      {
+        id: uuidv4(),
+        title: '',
+        content: '',
+      },
+    ],
+  attacks:
+    [
+      {
+        id: uuidv4(),
+        name: '',
+        bonus: '',
+        damageType: '',
+      },
+    ],
+  spells:
+    [
+      {
+        id: uuidv4(),
+        title: '',
+        description: '',
+      },
+    ],
 };

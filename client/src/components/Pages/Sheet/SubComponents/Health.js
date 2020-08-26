@@ -12,7 +12,7 @@ export default function Health({ data, updateCharacter }) {
       /* TODO do a better job at communicating that you need to
        keep digits in the tens, keep dice multiplier in the ones */
     } else if (event.target.name === 'hitDiceMultiplier') {
-      if (event.target.value < 10) {
+      if (event.target.value < 100) {
         values.health[event.target.name] = Number(event.target.value);
         updateCharacter(values);
       }
@@ -80,7 +80,7 @@ export default function Health({ data, updateCharacter }) {
           <label id="hit-dice" htmlFor="hit-dice">
             <input
               id="hitDieMult"
-              className="character-component__input character-component__input--hd-1"
+              className="character-component__input character-component__input--diceMultiplier"
               type="number"
               placeholder="0"
               name="hitDiceMultiplier"
@@ -90,7 +90,7 @@ export default function Health({ data, updateCharacter }) {
             d
             <input
               id="hit-dice-size"
-              className="character-component__input character-component__input--hd-2"
+              className="character-component__input character-component__input--diceSize"
               type="number"
               placeholder="0"
               name="hitDiceSize"

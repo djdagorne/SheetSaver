@@ -515,7 +515,7 @@ strong {
   flex-direction: column;
   background: var(--clr-light);
   box-shadow: var(--bs-light);
-  margin: 5px 10px;
+  margin: 5px 0px;
   max-width: 300px;
 }
 
@@ -528,15 +528,16 @@ strong {
 .character-component__content {
   box-shadow: var(--bs-in-light);
   display: grid;
-  grid-gap: 1px;
   grid-template-columns: repeat(12, 1fr);
 }
 
 .character-component__item  {
   position: relative;
   display: flex;
+  box-sizing: content-box;
   justify-content: center;
   align-items: center;
+  margin: 0 -1px -1px 0;
   border: 1px solid var(--clr-light-accent);
   box-shadow: var(--bs-in-light);
   background: var(--clr-light);
@@ -567,10 +568,39 @@ strong {
   flex-direction: column;
   justify-content: center;
   padding: .5rem 0;
+  margin-right: -1px;
   background: var(--clr-light-accent);
   border-bottom: 1px solid var(--clr-dark-accent);
   box-shadow: var(--bs-in-light);
 }
+
+.character-component__button-wrap {
+  grid-column: 1/13;
+  margin: 0 -1px -1px 0;
+  border: 1px solid var(--clr-light-accent);
+}
+.character-component__button {
+  padding: .5rem 1rem;
+  margin: 10px 25%;
+  background: var(--clr-light);
+  border: 1px solid var(--clr-light-accent);
+  box-shadow: var(--bs-light);
+  color: var(--clr-dark);
+  font-family: var(--ff-secondary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+.character-component__button:hover {
+  background: var(--clr-light-accent);
+  box-shadow: var(--bs);
+  opacity: 0.8;
+  backdrop-filter: saturate(180%) blur(20px) opacity(0.8);
+}
+.character-component__button:active {
+  box-shadow: var(--bs-light);
+}
+
 
 .character-component__input{
   margin: auto 5px;
@@ -581,7 +611,6 @@ strong {
   border: none;
   border-bottom: 1px solid var(--clr-dark-accent);
   font-size: var(--fs-h3);
-  overflow: visible;
 }
 .character-component__input--wrap {
   display: flex;
@@ -615,13 +644,16 @@ strong {
   grid-row: 2/3;
   grid-column: 1/7;
 }
-.character-component__input--hd-1 {
-  width: 15px;
-  margin-right: 0;
+.character-component__input--diceMultiplier {
+  position: relative;
+  width: 25px;
+  left: 4px;
 }
-.character-component__input--hd-2 {
+.character-component__input--diceSize {
+  position: relative;
   width: 25px;
   margin-left: 0;
+  right: 4px;
 }
 .character-component__death-saves {
   grid-row: 2/3;
@@ -733,11 +765,58 @@ strong {
 
 .character-component__content--character-skills {
   display: grid;
-  grid-gap: 2px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-}/* 
-.character-component__acrobatics-check {
-  grid-row: 1/2;
-  grid-column: 1/7;
-} */
+}
+.character-component__item--skill {
+  grid-column: 1/13;
+}
+.character-component__item--skill > label {
+  display: flex;
+  flex-direction: row;
+  margin: 8px auto 10px 18%;
+}
+
+/* ########################## PROFICIENCIES & LANGUAGES COMPONENT */
+
+.character-component__content--character-prof {
+  grid-template-rows: auto;
+}
+.character-component__titled-text {
+  position: relative;
+  grid-column: 1/13; 
+}
+.character-component__titled-text > label {
+  margin: 10px 0 12px 0;
+  height: auto;
+}
+.character-component__input--titled-text {
+  flex-direction: column;
+  margin: auto;
+  line-height: normal;
+}
+.character-component__input--title {
+  width: auto;
+  margin-bottom: 10px;
+  font-weight: var(--fw-bold);
+  font-family: var(--ff-secondary);
+}
+.character-component__input--content {
+  width: auto;
+  resize: vertical;
+  text-align: left;
+  border: 1px solid var(--clr-dark-accent);
+  overflow-x: hidden;
+  transition:box-shadow 0.5s ease;
+}
+
+/* ########################## ATTACKS & SPELLCASTING COMPONENT */
+
+.character-component__input--attack-name{
+  width: 100px;
+}
+.character-component__input--attack-bonus{
+  width: 25px;
+}
+.character-component__input--attack-damage-type {
+  width: 120px;
+  resize: vertical;
+}
