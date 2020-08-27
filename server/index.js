@@ -24,7 +24,7 @@ app.use('*', (req, res) => res.status(404).json({
 io.on('connection', (socket) => {
   console.log('client connected to socketio');
   // TODO server current starts with empty object,
-  //      and doesnt emit to any clients without a client input
+  //      and does not emit to any clients without a client input
   socket.on('client-to-server', (data) => {
     userInput = data;
     io.emit('server-to-client', userInput);

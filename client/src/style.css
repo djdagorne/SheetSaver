@@ -173,7 +173,6 @@ strong {
 }
 
 .header__auth-options {
-  /* display: flex; */
   margin-right: 1rem;
 }
 
@@ -203,10 +202,7 @@ strong {
   position: relative;
   text-align: center;
   padding: 1.25em 0;
-  bottom: 0;/* 
-  left: 0;
-  right: 0;
-  width: 100%; */
+  bottom: 0;
   z-index: 0;
 }
 
@@ -479,11 +475,24 @@ strong {
   background: var(--clr-light);
 }
 
-.char-sheet__title {
+.character-component__input--name {
+  width: 280px;
+  font-size: var(--fs-h2);
   font-family: var(--ff-secondary);
-  margin: 1em;
+  font-weight: var(--fw-bold);
+  background: transparent;
+  text-align: center;
 }
-
+.character-component__input--detail {
+  width: 280px;
+  font-size: var(--fs-h2);
+  font-family: var(--ff-secondary);
+  font-weight: var(--fw-bold);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--clr-dark-accent);
+  text-align: center;
+}
 .char-sheet__components {
   /* TODO change flex row for desktop table media queries */
   position: relative;
@@ -494,12 +503,12 @@ strong {
   align-self: center;
   min-width: 66%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 55px auto;
 }
 
 @media (min-width: 900px) {
   .char-sheet__components {
-    /* TODO fix all this, make grid for desktop views */
+    /* beginning of desktop grid formats */
     flex-direction: column;
     max-height: 1200px;
   }
@@ -515,7 +524,7 @@ strong {
   flex-direction: column;
   background: var(--clr-light);
   box-shadow: var(--bs-light);
-  margin: 5px 0px;
+  margin: 5px ;
   max-width: 300px;
 }
 
@@ -630,7 +639,7 @@ strong {
 /* ########################## HEALTH COMPONENT */
 
 .character-component__content--character-health {
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 80px 1fr 80px;
 }
 .character-component__temp-hp {
   grid-row: 1/2;
@@ -819,4 +828,57 @@ strong {
 .character-component__input--attack-damage-type {
   width: 120px;
   resize: vertical;
+}
+
+/* ########################## EQUIPMENT COMPONENT */
+
+.character-component__content--character-equipment {
+  grid-template-rows: repeat(5, 1fr)
+}
+
+.character-component__wallet {
+  grid-row: 1/6;
+  grid-column: 1/5;
+  width: 100%;
+  font-family: var(--ff-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 10px auto;
+}
+.character-component__input--coin {
+  width: 65px;
+  margin: 5px 0;
+}
+
+.character-component__equipment {
+  grid-row: 1/6;
+  grid-column: 5/13;
+  display: flex;
+  justify-content: center;
+  align-content:center;
+  justify-items:center;
+  align-items:center;
+  padding-top: 5px;
+}
+.character-component__equipment-textarea {
+  width: 180px;
+  height: 145px;
+  margin: 10px auto;
+}
+.character-component__equipment > label {
+  margin: 0px;
+}
+
+/* ########################## BIO COMPONENT */
+
+.character-component__bio {
+  position: relative;
+  grid-column: 1/13;
+  padding: 10px 0 10px;
+}
+
+.character-component__input--bio-content{
+  margin: 5px auto 5px;
+  width: 250px;
 }

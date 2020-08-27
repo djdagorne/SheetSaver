@@ -8,7 +8,7 @@ export default function ProficienciesAndLanguages({ data, updateCharacter }) {
     values.proficienciesAndLanguages[event.target.id.split(' ')[0]][event.target.name] = event.target.value;
     updateCharacter(values);
   };
-  const addNewItem = (e) => { // TODO get POST end point set up
+  const addNewItem = (e) => {
     const newProf = {
       id: uuidv4(),
       title: '',
@@ -44,7 +44,7 @@ export default function ProficienciesAndLanguages({ data, updateCharacter }) {
                   className="character-component__input character-component__input--content"
                   placeholder="common, dwarvish, etc"
                   name="content"
-                  rows={1 + (item.content.length / 22)}// TODO play with this value a bit?
+                  rows={1 + (item.content.length / 22)}
                   value={item.content}
                   onChange={(e) => handleChangeInput(e)}
                 />

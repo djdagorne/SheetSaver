@@ -1,6 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
+  name: 'Grognar',
+  class: 'asd',
+  race: 'ddd',
+  background: 'rrr',
+  alignment: 'ttt',
   health: {
     tempHP: 0,
     currentHP: 0,
@@ -205,4 +210,34 @@ export default {
         description: '',
       },
     ],
+  equipment: '',
+  wallet: {
+    copper: '',
+    silver: '',
+    electrum: '',
+    gold: '',
+    platinum: '',
+  },
+  bio: [
+    {
+      title: 'personality',
+      content: '',
+    },
+    {
+      title: 'ideals',
+      content: '',
+    },
+    {
+      title: 'bonds',
+      content: '',
+    },
+    {
+      title: 'flaws',
+      content: '',
+    },
+    {
+      title: 'background details',
+      content: '',
+    },
+  ],
 };

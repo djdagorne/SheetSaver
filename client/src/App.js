@@ -23,8 +23,7 @@ export default function App() {
     user: undefined,
   });
 
-  // TODO finish components (ez)
-  // - get database schema for character object
+  // - TODO get database schema for character object
   // - public sheets with real time read access
   // - sheets with only owner + approved username list real time edit access
   // - character list under user home page

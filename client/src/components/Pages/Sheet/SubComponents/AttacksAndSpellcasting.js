@@ -70,7 +70,7 @@ export default function AttacksAndSpellcasting({ data, updateCharacter }) {
                   className="character-component__input character-component__input--attack-damage-type"
                   placeholder="0d0 + 0"
                   name="damageType"
-                  rows={1 + (attack.damageType.length / 14)}// TODO play with this value a bit?
+                  rows={1 + (attack.damageType.length / 14)}
                   value={attack.damageType}
                   onChange={(e) => handleAttackInput(e)}
                 />

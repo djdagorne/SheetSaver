@@ -4,8 +4,8 @@ import React from 'react';
 
 export default function Health({ data, updateCharacter }) {
   // TODO deconstruct data into separate objects?
+  const values = { ...data };
   const handleChangeInput = (event) => {
-    const values = { ...data };
     if (event.target.type === 'checkbox') {
       values.health[event.target.name] = !values.health[event.target.name];
       updateCharacter(values);
