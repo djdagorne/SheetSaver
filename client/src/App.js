@@ -88,7 +88,7 @@ export default function App() {
           <ProtectedRoute path="/home" component={Home} />
           <PublicOnlyRoute path="/login" component={Login} />
           <PublicOnlyRoute path="/register" component={Register} />
-          <PublicOnlyRoute path="/sheet" component={Sheet} />
+          <Route path="/sheet" component={Sheet} />
           <Route path="*" component={NotFound} />
         </Switch>
         {/* <DynamicInput /> */}

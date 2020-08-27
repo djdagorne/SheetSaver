@@ -10,7 +10,7 @@ export default function CharacterBio({ data, updateCharacter }) {
   return (
     <div className="character-component">
       <div className="character-component__heading">
-        <h3 className="character-component__title">Attacks & Spellcasting</h3>
+        <h3 className="character-component__title">Character Bio</h3>
       </div>
       <div className="character-component__content">
         {data.bio.map((item, index) => (

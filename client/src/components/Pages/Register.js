@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import ErrorNotice from '../Utils/ErrorNotice';
 
-export default function Register(props) {
+export default function Register({ hideModal }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
@@ -15,8 +15,6 @@ export default function Register(props) {
 
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
-
-  const { hideModal } = props;
 
   const submit = async (e) => {
     e.preventDefault();

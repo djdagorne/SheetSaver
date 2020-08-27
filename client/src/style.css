@@ -520,12 +520,13 @@ strong {
 .character-component {  /* mobile first */
   position: relative;
   display: flex;
-  flex: 1 1 300px;
+  flex: 1 1;
   flex-direction: column;
   background: var(--clr-light);
   box-shadow: var(--bs-light);
   margin: 5px ;
-  max-width: 300px;
+  width: 300px;
+  min-width: 300px;
 }
 
 .character-component--plus {

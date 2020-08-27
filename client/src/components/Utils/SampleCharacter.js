@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export default {
-  name: 'Grognar',
-  class: 'asd',
-  race: 'ddd',
-  background: 'rrr',
-  alignment: 'ttt',
+  name: '',
+  class: '',
+  race: '',
+  background: '',
+  alignment: '',
   health: {
     tempHP: 0,
     currentHP: 0,

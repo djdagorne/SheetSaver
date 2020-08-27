@@ -6,7 +6,6 @@ export default function Splash() {
   const [popup, setPopup] = useState();
 
   const register = () => {
-    // history.push("/register");
     setPopup('register');
   };
   const hideModal = () => {
@@ -16,7 +15,6 @@ export default function Splash() {
   };
   return (
     <main className="splash-page">
-      {/* <DynamicInput /> */}
       <section className="hero">
         <h1 className="hero__text--title">SHEETSAVER</h1>
         <h3 className="hero__text--subsubtitle">Dungeons &amp; Dragons 5e Character Sheet</h3>

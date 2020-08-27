@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import UserContext from '../../context/UserContext';
 
-export default function Login(props) {
+export default function Login({ hideModal }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -24,7 +24,7 @@ export default function Login(props) {
     });
     localStorage.setItem('auth-token', loginRes.data.token);
     // eslint-disable-next-line react/prop-types
-    props.hideModal();
+    hideModal();
     history.push('/home');
   };
 

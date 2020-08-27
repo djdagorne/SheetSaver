@@ -12,7 +12,7 @@ export default function ProficienciesAndLanguages({ data, updateCharacter }) {
     const newProf = {
       id: uuidv4(),
       title: '',
-      description: '',
+      content: '',
     };
     e.preventDefault();
     values.proficienciesAndLanguages.push(newProf);

@@ -18,7 +18,6 @@ export default function Header() {
     history.push('/');
   };
   const login = () => {
-    // history.push("/login");
     setPopup('login');
   };
   const hideModal = () => {
